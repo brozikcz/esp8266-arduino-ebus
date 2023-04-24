@@ -102,6 +102,7 @@ void setup() {
 
   WiFi.enableAP(false);
   WiFi.begin();
+  WiFi.setSleep(false);
 
   WiFiManager wifiManager(Serial1);
 
@@ -111,9 +112,13 @@ void setup() {
   wifiManager.autoConnect(HOSTNAME);
  
   wifiServer.begin();
+  wifiServer.setNoDelay(true);
   wifiServerRO.begin();
+  wifiServerRO.setNoDelay(true);
   wifiServerEnh.begin();
+  wifiServerEnh.setNoDelay(true);
   statusServer.begin();
+  statusServer.setNoDelay(true);
 
   ArduinoOTA.begin();
 

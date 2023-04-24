@@ -125,6 +125,10 @@ void process_cmd(WiFiClient* client, uint8_t c, uint8_t d){
         }
     }
     if (c == CMD_SEND){
+        if (d == SYN) {
+            send_res(client, RECEIVED, SYN);
+            return;
+        }
         Serial.write(d);
         return;
     }
